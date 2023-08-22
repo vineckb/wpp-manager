@@ -1,0 +1,25 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:topsecret@postgres:5432/wppconnections"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Connection {
+  id String @id @default(uuid())
+  key String @unique @default(uuid())
+  https Boolean @default(false)
+  host String @default("localhost")
+  port Int @unique
+  status String @default("new")
+  name String @unique
+  secret String
+  token String?
+
+  createdAt DateTime @default(now())
+}

@@ -1,0 +1,32 @@
+version: "3.3"
+services:
+  manager:
+    restart: on-failure
+    build: ./manager
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    depends_on:
+      - nginx
+      - postgres
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./containers:/containers
+      - ./nginx:/nginx
+    env_file: manager/.env
+  nginx:
+    build: ./nginx
+    container_name: wpp_nginx
+    ports:
+      - "8080:80"
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: wppconnections
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: topsecret
+    ports:
+      - "5433:5432"
+    restart: unless-stopped
+    volumes:
+      - ./data:/var/lib/postgresql/data

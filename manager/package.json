@@ -1,0 +1,30 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "start": "node .output/server/index.mjs"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@vicons/carbon": "^0.12.0",
+    "naive-ui": "^2.34.4",
+    "nuxt": "^3.6.5",
+    "prisma": "^5.1.1"
+  },
+  "dependencies": {
+    "@types/node": "^18.17.3",
+    "@prisma/client": "5.1.1",
+    "@tanstack/vue-query": "^4.32.6",
+    "@types/dockerode": "^3.3.19",
+    "axios": "^1.4.0",
+    "dockerode": "^3.3.5",
+    "nuxt-socket-io": "^3.0.13",
+    "socket.io-client": "^4.7.2",
+    "vue-query": "^1.26.0"
+  }
+}
